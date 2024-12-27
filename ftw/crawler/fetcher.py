@@ -51,6 +51,10 @@ class ResourceFetcher(object):
             URL = os.environ.get('GEOPORTAL_URL')
             PUBLIC_URL = os.environ.get('GEOPORTAL_PUBLIC_URL', URL)
             url = url.replace(PUBLIC_URL, URL)
+        if self.resource_info.site.url in ['https://gev0016.bgov.ch:443', ]:
+            URL = os.environ.get('STADTRAT_URL')
+            PUBLIC_URL = os.environ.get('STADTRAT_PUBLIC_URL', URL)
+            url = url.replace(URL, PUBLIC_URL)
 
         modified = self.is_modified()
         if not self.options.force and not modified:
